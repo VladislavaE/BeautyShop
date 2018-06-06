@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Masters
+    public class Service
     {
         public string Name { get; set; }
-        public List<Services> Skills { get; set; }
-        public Schedule Schedule { get; set; }
+        public List<Master> Masters { get; set; }
     }
 }
