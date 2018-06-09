@@ -8,6 +8,7 @@ namespace Library
 {
     public class Master
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<Service> Skills { get; set; }
         public int FirstClientTime { get; set; }
