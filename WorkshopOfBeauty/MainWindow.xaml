@@ -4,9 +4,85 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkshopOfBeauty"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" 
+        Title="Авторизация"  Height="275" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+
+
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/фон1.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock HorizontalAlignment="Left" Margin="95,3,0,95" FontSize="20" Grid.ColumnSpan="3" Width="225" Grid.Column="1" Foreground="White"><Run FontWeight="Bold" Text="Введите ваши данные"/><LineBreak/><Run/></TextBlock>
+        <TextBox  
+                 Name ="textBoxEmail" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch"
+                 Margin="60,36,60,53" FontSize="14" Grid.ColumnSpan="4" 
+                 FontFamily="Segoe UI Black"/>
+        <TextBlock IsHitTestVisible="False" Text="Логин"  TextAlignment="Left" Grid.Row="0" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="3" Padding="5"  Foreground="LightGray" Margin="60,42,105,48" FontSize="16">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=textBoxEmail}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=textBoxEmail, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+
+        <PasswordBox Name ="passwordBoxPassword" 
+                     
+                     Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="60,78,60,12" FontSize="14" 
+                     Grid.ColumnSpan="4" FontFamily="Segoe UI Black"/>
+        <TextBlock IsHitTestVisible="False" Text="Пароль"  TextAlignment="Left"  Padding="5"  Foreground="LightGray" Margin="60,83,105,4" FontSize="16" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Password, ElementName=passwordBoxPassword}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=passwordBoxPassword, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+
+
+
+        <StackPanel Grid.ColumnSpan="4" Margin="1,114,0,-6" Orientation="Vertical" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.089"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button x:Name="ButtonlLogin" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="130,10,129,10" Width="140" Height="30" FontWeight="Bold" FontSize="14" Content="Вход" RenderTransformOrigin="0.485,0.041" Click="ButtonlLogin_Click"/>
+            <Button x:Name="ButtonRegister" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="130,1,129,10" Width="140" Height="30" FontSize="14" FontWeight="Bold" Content="Регистрация" Click="ButtonRegister_Click"/>
+            <Button x:Name="ButtonWithoutRegister" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="111,1,102,1" Height="28" FontSize="14" FontWeight="Bold" Content="Запись без регистрации" Click="ButtonWithoutRegister_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

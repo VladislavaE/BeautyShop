@@ -1,0 +1,18 @@
+﻿<Window x:Class="WorkshopOfBeauty.PrivateOffice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkshopOfBeauty"
+        mc:Ignorable="d"
+        Title="Личный кабинет" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/фон1.jpg"/>
+        </Grid.Background>
+        <Button Margin="84,58,465,261" Width="243" Height="100" FontWeight="Bold" FontSize="24">Сделать заказ</Button>
+        <Button Margin="467,58,82,261" Width="243" Height="100" FontWeight="Bold" FontSize="24">"Мои визиты"</Button>
+        <Button Margin="84,268,465,51" Width="243" Height="100" FontWeight="Bold" FontSize="24">Система скидок</Button>
+        <Button Margin="467,268,82,51" Width="243" Height="100" FontWeight="Bold" FontSize="20" Click="Button_Click">Сменить логин/пароль</Button>
+    </Grid>
+</Window>

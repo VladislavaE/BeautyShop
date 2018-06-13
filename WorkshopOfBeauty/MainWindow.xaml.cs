@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library;
 
 namespace WorkshopOfBeauty
 {
@@ -20,9 +21,40 @@ namespace WorkshopOfBeauty
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UsersDatabaseRepository users = UsersDatabaseRepository.testRepo();
+       
+
         public MainWindow()
         {
-            InitializeComponent();
+            TestIt.testMain();
+            //InitializeComponent();
+        }
+
+        
+
+        private void ButtonlLogin_Click(object sender, RoutedEventArgs e)
+        {
+            User us = users.LoginUser(textBoxEmail.Text, passwordBoxPassword.Password);
+            if (us == null)
+            {
+                var error = new ErrorWindow().ShowDialog();
+            }
+            else
+            { new PrivateOffice(us, users).ShowDialog(); }
+        }
+
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            var registration = new RegistrationForm(users);
+            registration.ShowDialog();
+        }
+
+        
+
+        private void ButtonWithoutRegister_Click(object sender, RoutedEventArgs e)
+        {
+            var withoutregistration = new DetailsOfVisit();
+            withoutregistration.ShowDialog();
         }
     }
 }

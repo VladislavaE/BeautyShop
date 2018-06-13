@@ -12,6 +12,8 @@ namespace Library
         public string Name { get; set; }
         public string Login { get; set; }
         public string HashedPassword { get; set; }
+        public string TelNumber { get; set; }
+        public int Discount { get; set; }
         public List<Order> UpcomingEvents { get; set; }
         public List<Order> PastEvents { get; set; }
 
@@ -51,6 +53,30 @@ namespace Library
                 UpcomingEvents.Remove(order);
                 PastEvents.Add(order);
             }
+        }
+        public int GetDiscountValue()
+        {
+            int total = PastEvents.Count;
+            if (total > 7 && total <= 15) { Discount = 3; }
+            if (total > 15 && total <= 30) { Discount = 5; }
+            if (total > 30 && total <= 40) { Discount = 10; }
+            if (total > 40 && total <= 50) { Discount = 15; }
+            if (total > 50) { Discount = 20; }
+            return Discount;
+        }
+
+        public double PriceWithDiscount(Order order)
+        {
+            double priceWithDiscount;
+            if (Discount >= 3) { priceWithDiscount = (order.Price * (100 - Discount)) / 100; }
+            else { priceWithDiscount = order.Price; }
+            return priceWithDiscount;
+        }
+
+        public void DeletePastEventsWhenNotNeeded()
+        {
+            int totalAmount = PastEvents.Count;
+            if (totalAmount > 51) { PastEvents.Clear(); }
         }
     }
 }

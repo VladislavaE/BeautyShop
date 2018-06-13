@@ -7,9 +7,40 @@ using System.Security.Cryptography;
 
 namespace Library
 {
-    class UsersDatabaseRepository
+    public class UsersDatabaseRepository:IUsersRepository
     {
-        private List<User> RegisteredUsers { get; set; }
+        private List<User> RegisteredUsers { get; set; } //Db<Set>
+        public static UsersDatabaseRepository testRepo()
+        {
+            var registeredUsers = new List<User>()
+            {
+                 new User()
+           {
+                Id = 1,
+                Name = "Lena",
+                Login = "Lena",
+                HashedPassword = "123",
+                TelNumber = "1234567890",
+                UpcomingEvents = new List<Order>
+            {
+                new Order()
+                {
+                    Service=new Service
+                    {
+                        Name="Маникюр",
+                        Price=1000
+                    },
+                    Date=new DateTime(2018,06,17),
+                    Master=null,
+                    Price=1000
+                }
+            }
+           }
+            };
+            Console.WriteLine($"{registeredUsers.Count}");
+            return new UsersDatabaseRepository() { RegisteredUsers = registeredUsers };
+
+        }
 
         public void RegisterUser(string name, string login, string password)
         {
@@ -44,8 +75,35 @@ namespace Library
                 return user;
             }
             catch { return null; }
-
-             //методы для записи в базу данных и считывания
+   
         }
+        public void AddVisitToUser(Order order, User user)
+        {
+            user.AddOrder(order);
+            //WriteToDatabase();
+        }
+
+        public void RemoveVisitFromUser(Order order, User user)
+        {
+            user.CancelOrder(order);
+            //WriteToDatabase();
+        }
+
+        public static UsersDatabaseRepository FakeUsers()
+        {
+            return new UsersDatabaseRepository();
+        }
+
+        public User AnonymusUser()
+        {
+            var User = new User()
+            {
+
+            };
+            //RegisteredUsers.Add(User);
+            return User;
+            //WriteToDatabase
+        }
+        //методы для записи в базу данных и считывания
     }
 }

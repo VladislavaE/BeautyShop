@@ -1,0 +1,61 @@
+﻿<Window x:Class="WorkshopOfBeauty.DetailsOfVisit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkshopOfBeauty"
+        mc:Ignorable="d"
+        Title="Запись на процедуру" Height="420" Width="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="482*"/>
+            <ColumnDefinition Width="155*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.ColumnSpan="3" >
+            <StackPanel.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/фон1.jpg"/>
+            </StackPanel.Background>
+            <ComboBox
+            x:Name="comboBoxService" 
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Center" 
+                  DisplayMemberPath="ProcedureName" 
+                  Text="Процедура" IsEditable="True" IsReadOnly="True"  
+                  Margin="5"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40" SelectionChanged="comboBoxService_SelectionChanged"/>
+            <ComboBox
+            x:Name="comboBoxMaster" 
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Center" 
+                  DisplayMemberPath="MasterName" 
+                  Text="Мастер" IsEditable="True" IsReadOnly="True"  
+                  Margin="5"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40"/>
+            <ComboBox
+            x:Name="comboBoxDay" 
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Center" 
+                  DisplayMemberPath="DayName" 
+                  Text="День" IsEditable="True" IsReadOnly="True"  
+                  Margin="5"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40"/>
+            <ComboBox
+            x:Name="comboBoxTime" 
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Center" 
+                  DisplayMemberPath="TimeNumber" 
+                  Text="Время" IsEditable="True" IsReadOnly="True"  
+                  Margin="5"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40"/>
+        </StackPanel>
+
+
+
+        <Button HorizontalAlignment="Left" Margin="0,343,0,0" VerticalAlignment="Top" Width="179" Height="40" Name="ButtonConfirm" Grid.Column="1" Content="Подтвердить заказ" FontSize="14" FontWeight="Bold"/>
+        <Button HorizontalAlignment="Left" Margin="242,343,0,0" VerticalAlignment="Top" Width="179" Height="40" Name="ButtonAnotherOrder" Grid.Column="1" Content="Сделать еще один заказ" FontSize="14" FontWeight="Bold"/>
+        <Label  x:Name="NameUser" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"  Width="200" Height="35" FontSize="18" Grid.ColumnSpan="2" />
+
+    </Grid>
+</Window>
