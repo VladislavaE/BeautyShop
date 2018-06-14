@@ -10,6 +10,7 @@ namespace Library
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Master> Masters { get; set; }
+        public virtual List<Master> Masters { get; set; }
+        public double Price { get; set; }
     }
 }

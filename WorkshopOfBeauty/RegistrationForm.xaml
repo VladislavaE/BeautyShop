@@ -1,0 +1,103 @@
+﻿<Window x:Class="WorkshopOfBeauty.RegistrationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkshopOfBeauty"
+        mc:Ignorable="d"
+        Title="Регистрация" MinHeight="380" MinWidth="550" MaxHeight="380" MaxWidth="550" WindowStartupLocation="CenterScreen">
+
+
+    <Grid Margin="0,0,0,-3">
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/фон1.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="314*"/>
+            <RowDefinition Height="158*"/>
+            <RowDefinition Height="37*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Margin="82,10,49.6,62" FontSize="22" Text="Регистрация" TextDecorations="{x:Null}" FontWeight="Bold" Foreground="White" Grid.RowSpan="2"/>
+        <StackPanel Margin="10,42,16.6,10" Orientation="Vertical" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBox   Margin="15,15,14.2,15" x:Name="textBoxName" FontSize="15" Height="35"/>
+            <TextBox Margin="15,10,15,15" x:Name="textBoxEmail" FontSize="15" Height="35"/>
+            <PasswordBox Margin="15,5,15,15" x:Name="passwordBoxPassword" FontSize="15" Height="35"/>
+            <TextBox Margin="15,10,15,15" x:Name="textBoxTelephone" FontSize="15" Height="35"/>
+        </StackPanel>
+        <StackPanel Margin="0,284,-0.4,-0.2" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <Button x:Name="ButtonOkRegister" Margin="51,0,59.4,0" FontSize="18" Height="40" Content="Зарегистрироваться" Click="ButtonOkRegister_Click"/>
+        </StackPanel>
+        <StackPanel >
+            <Button x:Name="ButtonBack" Margin="0,0,50.8,0" FontSize="15" Height="27" Content="Назад" Background="#FFE7D3DD" Click="ButtonBack_Click"/>
+        </StackPanel>
+        <TextBlock IsHitTestVisible="False" Text="Имя"  TextAlignment="Left" Padding="5"  Foreground="LightGray" Margin="30,60,121.6,62" FontSize="16" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=textBoxName}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=textBoxName, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock IsHitTestVisible="False" Text="Логин"  TextAlignment="Left" Padding="5"  Foreground="LightGray" Margin="30,117,131.6,72" FontSize="16" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=textBoxEmail}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=textBoxEmail, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock IsHitTestVisible="False" Text="Телефон"  TextAlignment="Left" Padding="5"  Foreground="LightGray" Margin="30,234,131.6,-8.2" FontSize="16" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=textBoxTelephone}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=textBoxTelephone, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock IsHitTestVisible="False" Text="Пароль"  TextAlignment="Left" Padding="5"  Foreground="LightGray" Margin="30,172,121.6,10" FontSize="16" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Password, ElementName=passwordBoxPassword}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=passwordBoxPassword, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
+</Window>

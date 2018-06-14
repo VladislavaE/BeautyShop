@@ -4,27 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Data.Entity;
 
 namespace Library
 {
-    class UsersDatabaseRepository
+    public class UsersDatabaseRepository : IUsersRepository
     {
-        private List<User> RegisteredUsers { get; set; }
+        private DbSet<User> RegisteredUsers { get; set; }
+        Context context;
 
-        public void RegisterUser(string name, string login, string password)
+        public void RegisterUser(string name, string login, string password, string telNumber)
         {
             var user = new User
             {
                 Name = name,
                 Login = login,
-                HashedPassword = GetHash(password)
+                HashedPassword = GetHash(password),
+                TelNumber=telNumber,
+                Discount=0
             };
 
             if (!RegisteredUsers.Any(u => u.Login == login))
             {
                 RegisteredUsers.Add(user);
             }
-           // WriteToDatabase();  //Сделать метод для записи в базу данных
+            WriteToDatabase();
         }
 
         public static string GetHash(string password)
@@ -45,7 +49,27 @@ namespace Library
             }
             catch { return null; }
 
-             //методы для записи в базу данных и считывания
+        }
+        public void AddVisitToUser(Order order, User user)
+        {
+            user.AddOrder(order);
+            WriteToDatabase();
+        }
+
+        
+
+
+        public static UsersDatabaseRepository ReadFromDatabase()
+        {
+            var context = new Context();
+            context.Database.Log = Console.WriteLine;
+            var users = context.Users;
+            return new UsersDatabaseRepository() { RegisteredUsers = users, context = context };
+        }
+
+        public void WriteToDatabase()
+        {
+            context.SaveChanges();
         }
     }
 }

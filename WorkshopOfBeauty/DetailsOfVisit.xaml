@@ -1,0 +1,82 @@
+﻿<Window x:Class="WorkshopOfBeauty.DetailsOfVisit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkshopOfBeauty"
+        mc:Ignorable="d"
+        Title="Запись на процедуру" MinHeight="415" MinWidth="650" MaxHeight="450" MaxWidth="720">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/фон1.jpg"/>
+    </Window.Background>
+    <Grid Margin="0,0,63.6,104.6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox
+            x:Name="comboBoxProcedure" 
+                  HorizontalAlignment="Stretch" 
+            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                   
+                  DisplayMemberPath="Name" 
+                  Text="Процедура" IsEditable="True" IsReadOnly="True"  
+                  Margin="0,0,0,0"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40" SelectionChanged="comboBoxProcedure_SelectionChanged"/>
+        <TextBox 
+ x:Name ="textBoxDate" HorizontalAlignment="Stretch"
+             Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+ Margin="0,0,0,0" FontSize="14" Height="40"
+ FontFamily="Segoe UI Black"/>
+        <ComboBox
+            x:Name="comboBoxMaster" 
+                  HorizontalAlignment="Stretch" 
+                   
+                  DisplayMemberPath="Name" 
+            Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                  Text="Мастер" IsEditable="True" IsReadOnly="True"  
+                  Margin="0,0,0,0"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40" SelectionChanged="comboBoxMaster_SelectionChanged"/>
+        <TextBlock IsHitTestVisible="False" Text="ДД.ММ" TextAlignment="Left" Grid.Row="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="4" Padding="5" Foreground="Black" Margin="126,10,23.4,0" FontSize="16" FontWeight="Bold">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=textBoxDate}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=textBoxDate, Path=IsFocused}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <ComboBox
+            x:Name="comboBoxTime" 
+                  HorizontalAlignment="Stretch" 
+            Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"
+                  Text="Время" IsEditable="True" IsReadOnly="True"  
+                  Margin="0,0,0,0"
+                  Focusable="False" FontSize="20" FontWeight="Bold" Height="40"/>
+
+
+
+
+        <Button Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="1" Margin="100,0,100,14.8" Name="ButtonConfirm"  Content="Подтвердить заказ" FontSize="14" FontWeight="Bold" Click="ButtonConfirm_Click"/>
+        <Label  x:Name="NameUser" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"  Width="200" Height="35" FontSize="18" />
+
+    </Grid>
+</Window>
